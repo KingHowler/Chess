@@ -2,6 +2,11 @@
 
 Chess game;
 
+void cls()
+{
+    system("cls");
+}
+
 void DisplayBoard()
 {
     for (int i = 0; i < 129; i++)
@@ -81,9 +86,35 @@ void selectMove()
 int main()
 {
     int buff = 1;
-    // system("cls");
+    Point pawan;
     game.CreateBoard();
+    pawan.x = 4;
+    pawan.y = 5;
+    game.Board[5][4].color = 2;
+    game.Board[5][4].piece = 'p';
+    game.Board[5][4].add = pawan;
+    game.Board[5][4].add.address = "e6";
+    pawan.x = 3;
+    pawan.y = 4;
+    game.Board[4][3].color = 1;
+    game.Board[4][3].piece = 'Q';
+    game.Board[4][3].add = pawan;
+    game.Board[4][3].add.address = "d5";
     DisplayNotation();
+    game.checkMoves(pawan);
+    game.displayLegalMoves();
+    pawan.x = 4;
+    pawan.y = 5;
+    game.checkMoves(pawan);
+    game.displayLegalMoves();
+    pawan.x = 4;
+    pawan.y = 6;
+    game.checkMoves(pawan);
+    game.displayLegalMoves();
+    pawan.x = 1;
+    pawan.y = 6;
+    game.checkMoves(pawan);
+    game.displayLegalMoves();
     while (buff != 0)
     {
         cin >> buff;
